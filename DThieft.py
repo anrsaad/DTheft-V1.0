@@ -114,6 +114,8 @@ while True :
                     os.mkdir(makefolder)
                     copy2(tmp_file, makefolder)
 
+                    ### command line or defin copy all object inside usb and passt them here
+
         elif not os.path.exists(checker):
             pass 
 
