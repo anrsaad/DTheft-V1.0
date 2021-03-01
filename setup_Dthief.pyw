@@ -23,13 +23,15 @@ runpath = r"C:\DTheft\run_dthief.vbs"
 
 
 def intro():
-    os.system("mode con: COLS=92 LINES=22")
+    os.system("color 9")
+    os.system("mode con: COLS=90 LINES=22")
     os.system("cls")
     animation = "#"
     print("\t"*5, animation *40, "\n","\t"*4, animation *40," "*5, "| \n", "\t"*3, animation * 10+ "     DTHIEF v1.0", "\t", animation *10, " "*11, "|\n", "\t"*2, animation *40," "*21, "| \n", "\t"*1, animation *40," "*9," |__By saad anouar__|", "\n")
     print("""\n List commands: \n\n            [--help or --info] to Read about program
             [--run or --start] to execute the program
             [--stop or --kill] to finish the program
+            [--exit or --quit] exit and close windows
 
     ____________________________________________________________________________
     |                                                                           |
@@ -42,6 +44,7 @@ intro()
 
 def help_page():
     os.system("mode con: COLS=94 LINES=45")
+    os.system("color f")
 
     print("""                             ___________________________
                             |                           |
@@ -260,21 +263,21 @@ while True :
             os.system("mode con: COLS=50 LINES=10")
 
             if os.path.exists(r"C:\DTheft\dthief_run.vbs") and os.path.exists(r"C:\DTheft\dthief_win.bat") and os.path.exists(r"C:\DTheft\dthief.pyw"):
-                os.system("cls")
-                print("\n"*4, " "*15," Dthief ACTIVTED SUCCESSFULY")
+                os.system("cls && color 4")
+                print("\n"*3, " "*10," Dthief ACTIVTED SUCCESSFULY")
                 sleep(1.0)
                 os.system("start C:\DTheft\dthief_run.vbs")
 
             else :
                 sys_dthief()
                 os.system("start C:\DTheft\dthief_run.vbs")
-                os.system("cls")
-                print("\n"*10, " "*12," Dthief ACTIVTED SUCCESSFULY")
+                os.system("cls && color 4")
+                print("\n"*6, " "*10," Dthief ACTIVTED SUCCESSFULY")
                 sleep(2.0)
 
         elif choose == "--stop" or choose == "--kill" or choose == "--KILL" or choose == "--STOP":
             os.system("mode con: COLS=60 LINES=10")
-            os.system("cls")
+            os.system("cls && color 9")
             print(" == >> Program stoped :( ")
             print("\n"*3, " "*5, "THANKS FOR USING MY PROGRAM 'Dthief v1' :) ", "\n", " "*19, "HOPE YOU LIKE IT", "\n", " "*19, "developed by : Saad Anouar", "\n"*2)
             
@@ -285,6 +288,10 @@ while True :
             os.system("cls")
             help_page()
             user_answer()
+        elif choose == "--exit" or choose == "--EXIT" or choose == "--quit" or choose == "--QUIT" :
+            os.system("cls && exit")
+            sys.exit()
+            
 
 
     user_answer()
