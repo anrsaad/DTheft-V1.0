@@ -1,6 +1,6 @@
 import os, sys
 from time import sleep
-import shutil
+import shutil, socket
 
 setup_path=r"C:\DTheft\setup_Dthief.pyw"
 
@@ -16,7 +16,7 @@ if os.path.exists("C:\Windows\System32\dthief.bat") :
     pass 
 elif not os.path.exists("C:\Windows\System32\dthief.bat") :
     run_bat = open (r"C:\Windows\System32\dthief.bat", "w")
-    run_bat.write("""@echo off\npython C:\DTheft\setup_Dthief.pyw\npause>nul""")
+    run_bat.write("""@echo off\ncolor 9\npython C:\DTheft\setup_Dthief.pyw\npause>nul""")
     run_bat.close()
 
 runpath = r"C:\DTheft\run_dthief.vbs"
@@ -32,6 +32,7 @@ def intro():
             [--run or --start] to execute the program
             [--stop or --kill] to finish the program
             [--exit or --quit] exit and close windows
+            [--link or --down] visite original source
 
     ____________________________________________________________________________
     |                                                                           |
@@ -291,7 +292,19 @@ while True :
         elif choose == "--exit" or choose == "--EXIT" or choose == "--quit" or choose == "--QUIT" :
             os.system("cls && exit")
             sys.exit()
-            
+        elif choose == "--link" or choose == "--LINK" or choose == "--down" or choose == "--DOWN" :
+            os.system("cls")
+            IPaddress=socket. gethostbyname(socket. gethostname())
+            if IPaddress!="127.0.0.1":
+                os.system("start https://github.com/anrsaad/DTheft")
+            else:
+                os.system("mode con: COLS=50 LINES=10")
+                os.system("cls && color 9")
+                print("\n"*4," "*4, "CHECK YOUR CONNECTION AND TRY AGAIN :(")
+                sleep(2.0)
+                pass
+                
+
 
 
     user_answer()
