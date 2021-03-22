@@ -1,12 +1,12 @@
 PROGRAM NAME      : DTheft-V1.0                                                                                                   
-PROGRAM LANGUAGE  : Python 3.7
-OPERATION SYSTEM  : Windows (work only for windows OS)
-AUTHOR            : Saad Anouar
-CREATED FOR       : This program can theft any USB Drives connected to your computer silently without knowledge of USB proprietors.
-REPOSITORY CONTENT: 
-                    README.md        >> informations about program and how to use it efficacy
-                    Dthief.pyw       >> cod source of inside working (FILE FOR DEVELOPERS)
-                    setup_Dthief.pyw >> program for anyone 
+PROGRAM LANGUAGE  : Python 3.7                                                                                                    
+OPERATION SYSTEM  : Windows (work only for windows OS)                                                                                
+AUTHOR            : Saad Anouar                                                                                                             
+CREATED FOR       : This program can theft any USB Drives connected to your computer silently without knowledge of USB proprietors.       
+REPOSITORY CONTENT:                                                                                                                  
+                    README.md        >> informations about program and how to use it efficacy                                         
+                    Dthief.pyw       >> cod source of inside working (FILE FOR DEVELOPERS)                                           
+                    setup_Dthief.pyw >> program for anyone                                                                             
 
 
                       __________________________________________________________________
