@@ -4,9 +4,9 @@ OPERATION SYSTEM  : Windows (work only for windows OS)
 AUTHOR            : Saad Anouar                                                                                                             
 CREATED FOR       : This program can theft any USB Drives connected to your computer silently without knowledge of USB proprietors.       
 REPOSITORY CONTENT:                                                                                                                  
-                                      README.md        >> informations about program and how to use it efficacy                                         
-                                      Dthief.pyw       >> cod source of inside working (FILE FOR DEVELOPERS)                                           
-                                      setup_Dthief.pyw >> program for anyone                                                                             
+----------------------------> README.md        >> informations about program and how to use it efficacy                                         
+----------------------------> Dthief.pyw       >> cod source of inside working (FILE FOR DEVELOPERS)                                           
+----------------------------> setup_Dthief.pyw >> program for anyone                                                                             
 
 
                       __________________________________________________________________
