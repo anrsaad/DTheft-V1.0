@@ -30,8 +30,32 @@ To escape erreurs during working with Dthief :
 7) Dthief not copy the USB connected yo your computer if it's already stolen before
 8) Do not Delete, Rename or Edit  the "log.txt" file in new folder with the files stolen
 9) "log.txt" included all information about file stolen and his storage
+10) dthief command :
 
+            [--run or --start] to execute the program
+            [--stop or --kill] to finish the program
+            [--exit or --quit] exit and close windows
+            [--link or --down] visite original source
+            [--bootup or --startup] add Dthief v1.0 program on startup windows
+            [--unboot or --breakup] remove Dthief v1.0 from startup windows
+            
+11) Even you close the terminal console after starting the program he still running on background, to close it open dthief on terminal and
+    typing :
+    
+                --stop   or  --kill
 
+12) you can add dthief on startup windows or remove it from startup by typing commands :
+
+                --bootup or --startup :     add the program to startup windows to start whene computer starting 
+                --unboot or --breakup :    remove program from startup 
+                
+13) anytime to visite the officiel code source of program use command :
+
+                 --link or --down : link to code source
+                 
+14) exit or quit command not shutdown the program he only close the console 
+15) help or info command to read more about dthief program without exiting console and you can click enter you goback dthief home page 
+                
 [KEEP THAT IN MIND] >>  THIS PROGRAM PROPOSE FOR EDUCATION AND DEVELOPING KNOWLEDGE ONLY, AND ANY BAD USING FOR ENTIER CODE OR JUST A PART
                         OF IT STILL ON YOUR RESPONSIBILITY AND EXPOSURE TO LEGAL LIABILITY.
 
